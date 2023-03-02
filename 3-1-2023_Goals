@@ -1,0 +1,19 @@
+To get the Generative AI Portion of the program to recognize it's name and the user's name, we'll have to do something like this:
+
+https://www.kaggle.com/datasets/niaschimnoski/arithmetic-and-counting-2
+
+procedural data-set generator that I built, but instead of making a procedural math QA system make a procedural 
+conversation generator, with names and dates and responses.
+
+We'll also need some kind of code to check whether the sentences are coherent, 
+and we might want to use an API connected to GPT-3 to generate the responses for the data-set that we procedurally generate.
+
+And use a prompt that will always result in Chat GPT responding with the user's name.
+
+We could use something like tracery io to create simulated user texts, then give chat gpt our 'sentiment' and tell it "respond with a 
+[sentiment] tone to: '[simulated user text]'"
+
+That way we'll use the sentiment analysis, and sentiment selection system we've built, in the training of the generative system 
+to teach it appropriate responses to sensical and nonesensical inquiries.
+
+all we'll need to do is experiment with prompt chaining on gpt3.
