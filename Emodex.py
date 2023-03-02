@@ -154,7 +154,7 @@ my_other = {
 
 def set_heart(my_heart, key, subkey, value):
     if key in my_heart and subkey in my_heart[key]:
-        if isinstance(value, int) and 0 <= value <= 5:
+        if isinstance(value, float) and 0 <= value <= 5:
             my_heart[key][subkey] = value
         elif key == "focus" and subkey in my_heart[key] and isinstance(value, int) and 0 <= value <= 1:
             my_heart[key][subkey] = value
