@@ -1,0 +1,63 @@
+Author Niaschim:
+
+Me
+Mar 03, 2023, 6:27 AM
+I'm thinking of including this in the chatbot, but I don't know how yet.
+
+
+https://youtu.be/Zbx4Qa7QTkw
+N
+niaschimnoski
+Me
+Mar 03, 2023, 6:27 AM
+Polyvagal theory
+
+N
+niaschimnoski
+Me
+Mar 03, 2023, 6:29 AM
+It's a 3 state system. Social, withdrawn, fight or flight.
+
+N
+niaschimnoski
+Me
+Mar 03, 2023, 6:32 AM
+So there's the state where your connected and feeling good.
+
+The state where you shrink into yourself and become withdrawn and numb.
+
+The state where you feel active and retaliatory.
+
+N
+niaschimnoski
+Me
+Mar 03, 2023, 8:33 AM
+I think I figured it out, the unprompted sends that the chatbot does, will change in frequency.
+
+Normally it sends you stuff like a normal ammount, but if it is feeling uncomfortable and dynamic the frequency goes up, whereas if it is feeling uncomfortable and sameness the frequency goes down.
+
+If it is feeling uncomfortable and both it picks one randomly until it sends a message then it picks randomly again.
+
+So your comfort level is your c out of c+d chance that you will have a center healthy range response time.
+
+Your discomfort level is your d out of d+c chance that you will choose an extreme response time.
+
+And your extreme response time is youre sameness and dynamism chance out of the sume of your average sameness and dynamism.
+
+N
+niaschimnoski
+Me
+Mar 03, 2023, 8:37 AM
+So we have 3 box and whisker plots basically for response frequency.
+
+If the chatbot is feeling angry or worried, it will still say nice things, but it will do so more frequently than usual.
+
+If the chatbot is feeling sad or bored, it will say nice things but when it talks, but barely talk.
+
+It will still respond immediately when spoken too, but it will not message you on its own for like maybe a week.
+
+N
+niaschimnoski
+Me
+Mar 03, 2023, 8:40 AM
+Also I want the chatbot to have inner monologue in that it stores in a very short term memory, where it is prompted you are feeling [emotion] what do you think about this, like every 6 seconds.
