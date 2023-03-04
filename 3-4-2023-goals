@@ -1,0 +1,15 @@
+I think because its own thoughts will be able to change its emotional state, the bot, will be programmed to respond on the channel that an interruption occurred on.
+
+thoughts won't follow the yearning rule, they'll be wild, and private to the bot.
+
+I'm thinking there's still a problem though, right now the PolyVagalImpulseModule sends a send instruction and some data, any time the bot's emotions get 
+updated at a rate that's constant, but I want thoughts to happen like a instead of once every 15 minutes, like every really quick like 500 milliseconds.
+
+and I want for the thoughts to influence the speaking prompts, and for the restart that the PolyVagalImpulseModule does any time the emotions change, 
+to only occur to emotional stimuli caused by outside sources, like a message from a human or another bot.
+
+So we'll need to add additional variables and edit my spaghetti code when the time comes.
+
+I'm thinking instead of building that cool game I talked to some people on fiverr about right away...
+It might be smarter to build an app like telegram, that allows user to adopt multiple bots into a group chat
+and foster a sense of community and friendship with them all, and allow multiple bots and users to interact in multiple ways.
