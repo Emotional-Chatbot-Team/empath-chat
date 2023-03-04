@@ -8,22 +8,26 @@
 # Copyright:   (c) The Schim 2023
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
-
+import BotEmodex
+from BotEmodex import bot_heart
+from BotEmodex import bot_other
+from BotEmodex import bot_yearning
+from BotEmodex import bot_other_yearning
+from BotEmodex import bot_empathy
 import csv
 from collections import defaultdict
 
-def analyze_emotions(my_mind, my_yearning):
-    # Find the shared keys between my_mind and my_yearning
-    shared_keys = set(my_mind.keys()) & set(my_yearning.keys())
+def analyze_emotions(bot_heart, bot_other, bot_yearning, bot_other_yearning):
+    # Calculate the averages
+    avg1 = {}
+    for key in bot_heart.keys():
+        avg1[key] = (bot_other[key] + bot_heart[key]) / 2
 
-    # Calculate the average values for each key in my_mind
-    avg_values = {}
-    for key in shared_keys:
-        avg_values[key] = {}
-        for subkey in my_mind[key]:
-            avg_values[key][subkey] = my_mind[key][subkey] / len(my_mind[key])
+    avg2 = {}
+    for key in bot_yearning.keys():
+        avg2[key] = (bot_other_yearning[key] + bot_yearning[key]) / 2
 
-    # Load the CSV file and calculate the distances between each emotion and my_yearning
+    # Load the CSV file and calculate the distances
     discomfort_scores = defaultdict(float)
     distances = defaultdict(float)
     with open('GrowingEmotions.csv') as csvfile:
@@ -37,16 +41,27 @@ def analyze_emotions(my_mind, my_yearning):
                     if subkey.endswith(' discomfort') and float(row[subkey]) > 1:
                         valid_sentiment = False
             if valid_sentiment:
-                for key in shared_keys:
-                    for subkey in my_yearning[key]:
-                        if subkey in avg_values[key]:
-                            emotion_avg = (float(row[key + ' ' + subkey]) + my_mind[key][subkey]) / 2
-                            distance = abs(emotion_avg - my_yearning[key][subkey])
-                            distances[row['sentiment']] += distance
+                distance1 = 0
+                distance2 = 0
+                for key in avg1.keys():
+                    if key in row.keys():
+                        distance1 += abs(float(row[key]) - avg1[key])
+                    if key + '_discomfort' in row.keys():
+                        distance1 += abs(float(row[key + '_discomfort']) - avg1[key])
 
-                    discomfort_subkeys = [k for k in row.keys() if ' discomfort' in k]
-                    for subkey in discomfort_subkeys:
-                        discomfort_scores[row['sentiment']] += float(row[subkey])
+                for key in avg2.keys():
+                    if key in row.keys():
+                        distance2 += abs(float(row[key]) - avg2[key])
+                    if key + '_discomfort' in row.keys():
+                        distance2 += abs(float(row[key + '_discomfort']) - avg2[key])
+
+                discomfort_score = sum(float(row[key]) for key in row.keys() if ' discomfort' in key)
+
+                if discomfort_score <= 1:
+                    distance = abs(distance1 - distance2)
+                    distances[row['sentiment']] += distance
+
+                    discomfort_scores[row['sentiment']] += discomfort_score
 
     # Filter out sentiments with a discomfort score of 2 or higher
     filtered_emotions = {}
@@ -54,10 +69,10 @@ def analyze_emotions(my_mind, my_yearning):
         if discomfort_scores[emotion] <= 1:
             filtered_emotions[emotion] = distances[emotion]
 
-    # Sort the remaining emotions by their distances to my_yearning using the quicksort algorithm
+    # Sort the remaining emotions by their distances to the averages
     sorted_emotions = sorted(filtered_emotions.items(), key=lambda x: x[1])
 
-    # Find the sentiment that is closest to my_yearning
+    # Find the sentiment that is closest to the averages
     for emotion, _ in sorted_emotions:
         if discomfort_scores[emotion] <= 1:
             return emotion
@@ -66,6 +81,8 @@ def analyze_emotions(my_mind, my_yearning):
 
 
 #how to run the code:
-    #result = analyze_emotions(my_mind, my_yearning)
-    #print(result)
+ # Call the analyze_emotions function with your input variables
+#result = analyze_emotions(bot_heart, bot_other, bot_yearning, bot_other_yearning)
 
+ # Print the result
+#print(result)
